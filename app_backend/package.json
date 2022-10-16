@@ -1,0 +1,19 @@
+{
+  "name": "ead_petrol_queue",
+  "version": "1.0.0",
+  "description": "The app for choose your nearest petrol queue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
+  }
+}
