@@ -1,3 +1,6 @@
+/*
+* Common custom loading dialog
+* */
 package com.example.ead;
 
 import android.app.Activity;
@@ -5,7 +8,9 @@ import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
-
+/*
+* This is common loading dialog for entrie app
+* */
 public class LoadingDialog {
     Activity activity;
     AlertDialog alertDialog;
