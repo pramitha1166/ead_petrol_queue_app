@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LoginScreen"
-    android:orientation="vertical"
-    android:background="#fff"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".RegisterScreen"
+android:orientation="vertical"
+android:background="#fff"
     >
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="#fff"
         android:orientation="vertical"
-        tools:context=".LoginScreen">
+        tools:context=".RegisterScreen">
 
         <!--        <ImageView-->
         <!--            android:id="@+id/imageView2"-->
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="100dp"
-            android:text="Hello There,"
+            android:text="Create new"
             android:textSize="40dp"
             app:fontFamily="@font/acme" />
 
@@ -40,18 +40,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:text="Welcome back"
+            android:text="Account"
             android:textSize="40dp"
             app:fontFamily="@font/acme" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:text="Sign in to continue"
-            android:textSize="15dp" />
+        <!--    <TextView-->
+        <!--        android:id="@+id/textView2"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginLeft="20dp"-->
+        <!--        android:layout_marginTop="50dp"-->
+        <!--        android:text="Sign in to continue"-->
+        <!--        android:textSize="15dp" />-->
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -78,10 +78,9 @@
             android:layout_marginRight="20dp"
             android:hint="Password"
             android:inputType="textPassword"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTintMode="src_in"
             app:passwordToggleContentDescription="sd"
-            >
+            app:passwordToggleEnabled="false"
+            app:passwordToggleTintMode="src_in">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
@@ -90,14 +89,44 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/login"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:text="Sign In" />
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            app:passwordToggleContentDescription="sd"
+            app:passwordToggleEnabled="false"
+            app:passwordToggleTintMode="src_in">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <CheckBox
+            android:id="@+id/is_shed_owner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="Shed owner" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="Sign Up" />
 
         <TextView
             android:id="@+id/textView3"
@@ -105,17 +134,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:text="Don't have an account?"
+            android:text="Already have an account?"
             android:textSize="12dp" />
 
         <Button
-            android:id="@+id/to_register"
+            android:id="@+id/to_login"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:text="Sign Up"
+            android:text="Sign In"
             app:backgroundTint="@color/black"
             app:iconTint="@color/primaryColor" />
 
@@ -123,7 +152,5 @@
     </LinearLayout>
 
 
-
-
-</RelativeLayout>
+</ScrollView>
 

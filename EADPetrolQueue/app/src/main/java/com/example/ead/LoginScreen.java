@@ -2,6 +2,7 @@ package com.example.ead;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,10 +11,10 @@ import android.widget.EditText;
 
 import com.example.ead.services.RestClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
-import org.json.JSONArray;
+
+import org.json.JSONObject;
+
 
 import cz.msebera.android.httpclient.Header;
 
@@ -22,6 +23,8 @@ public class LoginScreen extends AppCompatActivity {
     EditText userName;
     EditText password;
     Button login;
+    Button toSignUp;
+    LoadingDialog loadingDialog = new LoadingDialog(LoginScreen.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +33,49 @@ public class LoginScreen extends AppCompatActivity {
 
         userName = findViewById(R.id.username);
         password = findViewById(R.id.password);
+        toSignUp = findViewById(R.id.to_register);
         login = findViewById(R.id.login);
+
+        toSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginScreen.this, RegisterScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(validateDate()) {
                     System.out.println("Sending request...");
+                    loadingDialog.showLoadingDialog();
                     RestClient.post("/api/user/login", null, new AsyncHttpResponseHandler() {
 
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            loadingDialog.dismiss();
                             System.out.println("Success => " + statusCode);
+                            try {
+                                JSONObject responseJson = new JSONObject(new String(responseBody));
+                                System.out.println(responseJson.get("title"));
+
+                                String userType = responseJson.getJSONObject("body").getString("user_type");
+
+                                if(userType.equals("shed_owner")) {
+                                    System.out.println("Shed owner");
+                                }
+
+
+                            } catch (Exception e) {
+
+                            }
+
+
+                            //redirect to driver dashboard if user is driver
+                            //else redirect to shed owner dashboard
+
                         }
 
                         @Override
